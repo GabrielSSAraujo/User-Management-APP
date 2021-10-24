@@ -9,6 +9,7 @@ const StyledActionButton = styled.button`
     padding: 0.8rem 3.5rem;
     border:none;
     border-radius: 7px;
+    cursor: pointer;
 `;
 
 export {StyledActionButton}

@@ -1,9 +1,9 @@
 import React from "react";
 import { StyledActionButton } from "./style";
 
-const ActionButton = () =>{
+const ActionButton = ({onclick}) =>{
     return(
-        <StyledActionButton>
+        <StyledActionButton onClick={onclick}>
             Entrar
         </StyledActionButton>
     )
