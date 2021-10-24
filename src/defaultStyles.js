@@ -13,3 +13,5 @@ const colors = {
     buttonBg: "#E7B042",
     inputColor: "#E5E5E5"
 }
+
+export {colors, fontSize}

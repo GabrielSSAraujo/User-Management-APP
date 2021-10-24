@@ -1,14 +1,17 @@
 import React from "react";
-import { StyledDivLogin } from "./style";
-
+import { StyledLoginScreen, StyledDivFieldsLogin } from "./style";
+import Logo from "../../img/logo.png";
+import ActionButton from "../../Component/ActionButton";
 const LoginScreen = () =>{
     return(
-        <StyledDivLogin>
-            <div>Teste</div>
-            <input type="email" placeholder="email" />
-            <input type="password" placeholder="password"/>
-            
-        </StyledDivLogin>
+        <StyledLoginScreen>
+            <StyledDivFieldsLogin>
+                <img src={Logo}/>
+                <input type="email" placeholder="email" />
+                <input type="password" placeholder="password"/>
+                <ActionButton/>
+            </StyledDivFieldsLogin>
+        </StyledLoginScreen>
     )
 }
 
