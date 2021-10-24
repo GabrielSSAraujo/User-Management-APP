@@ -1,9 +1,6 @@
+import Routes from './Routes';
 function App() {
-  return (
-    <div>
-      <p>APP para controle de usuarios</p>
-    </div>
-  );
+  return <Routes/>;
 }
 
 export default App;
