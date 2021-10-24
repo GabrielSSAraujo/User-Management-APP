@@ -1,11 +1,7 @@
-FROM ubuntu
+FROM node:15
 
-COPY user-controller app
+COPY . /app
 
-ENV DEBIAN_FRONTEND=noninteractive
+WORKDIR /app
 
-RUN apt-get update && apt-get install -y npm
-
-WORKDIR app
-
-RUN npm install
+CMD ["sh","-c", "npm install && npm start"]
