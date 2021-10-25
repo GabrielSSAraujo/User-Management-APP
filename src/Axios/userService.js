@@ -44,3 +44,16 @@ export async function getAllUsers(){
         console.log(error);
     }
 }
+
+export async function createUser(toast,user){
+    try{
+        const response = await APIUser.post("/register",user,{
+            headers: {"x-access-token": getToken()}
+        })
+        toast.success("Usuário cadastrado com sucesso");
+    }catch(error){
+        toast.error("Erro ao cadastrar usuário, verifique os campos!")
+    }
+
+
+}
