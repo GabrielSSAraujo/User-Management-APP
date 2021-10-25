@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledActionButton } from "./style";
+import { StyledActionButton, StyledActionBigButton } from "./style";
 
 const ActionButton = ({onclick}) =>{
     return(
@@ -9,4 +9,12 @@ const ActionButton = ({onclick}) =>{
     )
 }
 
-export default ActionButton;
+const ActionBigButton = ({onclick, textValue}) =>{
+    return(
+        <StyledActionBigButton onClick={onclick}>
+            {textValue}
+        </StyledActionBigButton>
+    )
+}
+
+export {ActionButton, ActionBigButton};

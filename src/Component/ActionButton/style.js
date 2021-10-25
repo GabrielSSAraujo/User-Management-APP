@@ -12,4 +12,17 @@ const StyledActionButton = styled.button`
     cursor: pointer;
 `;
 
-export {StyledActionButton}
+const StyledActionBigButton = styled.button`
+    color:${colors.brownBg};
+    font-weight: bold;
+    font-size: ${fontSize.sizeLg};
+    background-color: ${colors.buttonBg};
+    width:35rem;
+    padding: 1rem 2rem;
+    border:none;
+    border-radius: 7px;
+    cursor: pointer;
+    margin-top:1rem;
+`;
+
+export {StyledActionButton, StyledActionBigButton}
