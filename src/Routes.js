@@ -4,6 +4,7 @@ import LoginScreen from "./Pages/LoginScreen";
 import { history } from "./history";
 import {isAuthenticated} from '../src/Auth/auth'
 import HomePage from "./Pages/HomePage";
+import CreateUser from "./Pages/CreateUser";
 
 const PrivateRoutes = ({component:Component, ...args})=>(
     <Route
@@ -23,6 +24,7 @@ const Routes = () =>(
     <BrowserRouter history={history}>
         <Switch>
             <PrivateRoutes exact path="/" component={()=><HomePage/>}/>
+            <PrivateRoutes exact path="/cadastro-usuario" component={()=><CreateUser/>}/>
             <Route exact path="/login" component={()=> <LoginScreen/>}/>
         </Switch>
     </BrowserRouter>
