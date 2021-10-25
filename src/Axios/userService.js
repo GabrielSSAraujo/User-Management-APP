@@ -22,10 +22,22 @@ export async function userLogin(toast,email,password){
     }
 }
 
-export async function getInfoUserLogeded(){
+export async function getInfoUserLogeded(toast){
     try{
         const response = await APIUser.get("/user/logeded",{
             headers: {"x-access-token": getToken() }
+        });
+        return response.data;
+    }catch(error){
+        console.log(error);
+        toast.error("Usuário sem permissão de administrador");
+    }
+}
+
+export async function getAllUsers(){
+    try{
+        const response = await APIUser.get("/user/listAll",{
+            headers: {"x-access-token": getToken()}
         });
         return response.data;
     }catch(error){
