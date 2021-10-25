@@ -1,10 +1,10 @@
 import React from "react";
 import { StyledActionButton, StyledActionBigButton } from "./style";
 
-const ActionButton = ({onclick}) =>{
+const ActionButton = ({onclick, textValue}) =>{
     return(
         <StyledActionButton onClick={onclick}>
-            Entrar
+            {textValue? (textValue):("Entrar")}
         </StyledActionButton>
     )
 }
