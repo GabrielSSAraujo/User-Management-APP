@@ -6,6 +6,7 @@ import { getAllUsers, getInfoUserLogeded } from "../../Axios/userService";
 import { logout } from "../../Auth/auth";
 import MapUserInfo from "../../Component/MapUserInfo";
 import toast, { Toaster } from "react-hot-toast";
+import HeaderTable from "../../Component/HeaderTable";
 
 const HomePage = ()=>{
     const [userName, setUserName] = useState("");
@@ -13,7 +14,7 @@ const HomePage = ()=>{
     const [userLevel, setUserLevel] = useState("");
     const [userLevelStr, setuserlevelStr] = useState("");
     const [users, setUsers] = useState([]);
-    
+
     useEffect(() => {
         async function getInfoUser(){
             const user = await getInfoUserLogeded();
@@ -47,7 +48,10 @@ const HomePage = ()=>{
                 <p>Olá, {userName}</p>
                 <span>{userLevelStr}</span>
                 <ActionBigButton textValue="Listar usuários" onclick={handleListUsers}/>
-                <MapUserInfo users = {users}/>
+                <thead className="listUsers">
+                    <HeaderTable/>
+                </thead>
+                    <MapUserInfo users = {users}/>
                 <ActionBigButton textValue="Cadastrar usuários" onclick={handleInsertUser}/>
             </StyledDiv>
             <Toaster/>

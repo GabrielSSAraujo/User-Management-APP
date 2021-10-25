@@ -1,6 +1,5 @@
 import React from "react";
 import { StyledInfoUserTable, StyledDivUserInfo } from "./style";
-import { useState } from "react";
 
 const UserInfoBlock = ({user}) =>{
     
