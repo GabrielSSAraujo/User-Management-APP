@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyledLoginScreen, StyledDivFieldsLogin } from "./style";
 import Logo from "../../img/logo.png";
-import ActionButton from "../../Component/ActionButton";
+import { ActionButton } from "../../Component/ActionButton";
 import { userLogin } from "../../Axios/userService";
 import toast, { Toaster } from "react-hot-toast";
 import { login, logout } from "../../Auth/auth";
@@ -18,7 +18,6 @@ const LoginScreen = () =>{
             history.push("/");
             login(response.token);
         }
-
     }   
 
     return(
