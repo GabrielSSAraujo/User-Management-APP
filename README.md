@@ -10,6 +10,6 @@ Já para o usuário não administrador, é possível visualizar essas informaç�
 
 ## Como rodar?
 
-Para rodar a aplicação é necessário subir o frontend com o comando 'docker-compose up'.
+Para rodar a aplicação é necessário possuir o 'docker' e o 'docker-compose' e seguir o comando 'docker-compose up' para subir o frontend.
 
 Em seguida é necessário subir o backend da aplicação seguindo as instruções contidas [neste repositório](https://github.com/GabrielSSAraujo/User-Management-APP-Backend).
