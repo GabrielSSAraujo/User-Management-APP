@@ -11,8 +11,9 @@ const BlockFieldsUser = ({
     onChangePassword,
     onChangeLevel,
     onclickB,
+    triggerT,
 }) =>{
-    return(
+    return triggerT ? (
         <>
             <StyledBlockFieldsDiv>
                 <StyledBlockFieldsCol1>
@@ -36,7 +37,7 @@ const BlockFieldsUser = ({
                 <ActionButton onclick={onclickB} textValue="Cadastrar"/>
             </StyledButtonDiv>
         </>
-    )
+    ):'';
 }
 
 export default BlockFieldsUser;
