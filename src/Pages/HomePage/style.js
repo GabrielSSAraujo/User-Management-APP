@@ -14,7 +14,7 @@ const StyledDiv = styled.div`
         font-size: ${fontSize.sizeXLg};
         margin-bottom: 0%;
     }
-    span{
+    span:last-child{
         margin: 0 0 2rem 0;
         font-size: ${fontSize.sizeSm};
     }

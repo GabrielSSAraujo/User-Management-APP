@@ -4,10 +4,8 @@ import Header from "../../Component/Header";
 import { StyledDiv } from "./style";
 import { createUser, getAllUsers, getInfoUserLogeded } from "../../Axios/userService";
 import { logout } from "../../Auth/auth";
-import MapUserInfo from "../../Component/MapUserInfo";
+import OpenList from "../../Component/OpenList";
 import toast, { Toaster } from "react-hot-toast";
-import HeaderTable from "../../Component/HeaderTable";
-import { history } from "../../history";
 import BlockFieldsUser from "../../Component/BlockFieldsUser";
 
 const HomePage = ()=>{
@@ -21,8 +19,8 @@ const HomePage = ()=>{
     const [infoEmail, setInfoEmail] = useState("");
     const [infoPassword, setInfoPassword] = useState("");
     const [infoLevel, setInfoLevel] = useState("");
-
-
+    const [trigger, setTrigger] = useState(false);
+    const [triggerT, setTriggerT] = useState(false);
 
     useEffect(() => {
         async function getInfoUser(){
@@ -31,32 +29,47 @@ const HomePage = ()=>{
             userLevel==1 ? setuserlevelStr("Administrador"):setuserlevelStr("Usuário");
             setUserName(user.userInfo.name);
             setUserEmail(user.userInfo.email);
-            
         }
         getInfoUser();
     });
 
     function handleLogout(){
         logout();
+        document.location.reload(true);
     }
 
     async function handleListUsers(){
-        const users = await getAllUsers(toast);
-        setUsers(users);
+        if(userLevel!=1){
+            toast.error("Você nao possui persissão de administrador");
+        }else{
+            const users = await getAllUsers(toast);
+            setUsers(users);
+            triggerT ? setTriggerT(false) : setTriggerT(true);
+        }
+       
     }
 
     function handleInsertUser(){
-        //history.push("/cadastro-usuario");
+        if(userLevel!=1){
+            toast.error("Você nao possui persissão de administrador");
+        }else{
+            trigger ? (setTrigger(false)) : (setTrigger(true));
+        }
     }
 
     async function handleCreateUser(){
-        const newUser = {
-            name:infoName,
-            email:infoEmail,
-            password: infoPassword,
-            level:infoLevel,
+        if(userLevel!=1){
+            toast.error("Você nao possui persissão de administrador");
+        }else{
+            const newUser = {
+                name:infoName,
+                email:infoEmail,
+                password: infoPassword,
+                level:infoLevel,
+            }
+            await createUser(toast,newUser);
         }
-        await createUser(toast,newUser);
+        
     }
 
     return(
@@ -64,14 +77,13 @@ const HomePage = ()=>{
             <Header name={userName} onclick={handleLogout}/>
             <StyledDiv>
                 <p>Olá, {userName}</p>
-                <span>{userLevelStr}</span>
+                <span>Seu email é: {userEmail}</span>
+                <span>Seu nível de acesso é: {userLevelStr}</span>
                 <ActionBigButton textValue="Listar usuários" onclick={handleListUsers}/>
-                <thead className="listUsers">
-                    <HeaderTable/>
-                </thead>
-                    <MapUserInfo users = {users}/>
+                <OpenList trigger={triggerT} users={users}/>
                 <ActionBigButton textValue="Cadastrar usuários" onclick={handleInsertUser}/>
                 <BlockFieldsUser 
+                    triggerT = {trigger}
                     valueName={infoName} 
                     onChangeName={(event)=>{setInfoName(event.target.value)}}
                     valueEmail={infoEmail}

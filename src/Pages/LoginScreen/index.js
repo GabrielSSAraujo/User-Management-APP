@@ -15,8 +15,9 @@ const LoginScreen = () =>{
         const response = await userLogin(toast,email,password);
         if(response){
             console.log(response.token);
-            history.push("/");
+            history.push("/usuario");
             login(response.token);
+            document.location.reload(true);
         }
     }   
 

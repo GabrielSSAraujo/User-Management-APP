@@ -4,7 +4,6 @@ import LoginScreen from "./Pages/LoginScreen";
 import { history } from "./history";
 import {isAuthenticated} from '../src/Auth/auth'
 import HomePage from "./Pages/HomePage";
-import CreateUser from "./Pages/CreateUser";
 
 const PrivateRoutes = ({component:Component, ...args})=>(
     <Route
@@ -18,14 +17,12 @@ const PrivateRoutes = ({component:Component, ...args})=>(
     />
 );
 
-
-
 const Routes = () =>(
     <BrowserRouter history={history}>
         <Switch>
-            <PrivateRoutes exact path="/" component={()=><HomePage/>}/>
-            <PrivateRoutes exact path="/cadastro-usuario" component={()=><CreateUser/>}/>
+            <PrivateRoutes exact path="/usuario" component={()=><HomePage/>}/>
             <Route exact path="/login" component={()=> <LoginScreen/>}/>
+            <Route exact path="/" component={() => <LoginScreen />} />
         </Switch>
     </BrowserRouter>
 );
